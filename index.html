@@ -162,7 +162,12 @@
     footer p { color: var(--muted); font-size: .88rem; }
     footer a { color: var(--amber); text-decoration: none; }
     footer a:hover { color: var(--amber-light); }
-  </style>
+  
+  .photo-strip{display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px;margin:0;max-height:320px;overflow:hidden}
+  .photo-strip img{width:100%;height:280px;object-fit:cover;display:block}
+  @media(max-width:640px){.photo-strip{grid-template-columns:1fr;max-height:none}.photo-strip img{height:200px}}
+
+</style>
 </head>
 <body>
 
@@ -196,6 +201,13 @@
       </div>
     </div>
   </section>
+
+<div class="photo-strip">
+  <img src="https://brazenproducts.github.io/elipacko-assets/plastic-bins.jpg" alt="Reusable plastic shipping boxes stacked" loading="lazy">
+  <img src="https://brazenproducts.github.io/elipacko-assets/warehouse-stack.jpg" alt="Warehouse reusable container storage" loading="lazy">
+  <img src="https://brazenproducts.github.io/elipacko-assets/cold-chain.jpg" alt="Cold chain reusable boxes" loading="lazy">
+</div>
+
 
   <div class="roi-strip">
     <div class="roi-inner">
