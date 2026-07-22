@@ -63,23 +63,10 @@
     }
 
     /* NAV */
-    nav {
-      background: #070707;
-      height: 66px;
-      padding: 0 5%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      box-shadow: 0 2px 0 var(--amber);
-    }
     .nav-brand { color: #fff; font-size: .95rem; font-weight: 800; text-decoration: none; letter-spacing: .06em; text-transform: uppercase; }
     .nav-brand span { color: var(--amber-light); }
     .nav-action { display: flex; align-items: center; gap: .8rem; }
     .nav-tag { font-size: .75rem; color: var(--muted); letter-spacing: .08em; text-transform: uppercase; }
-    .nav-cta { background: var(--amber); color: #000; font-weight: 800; text-decoration: none; padding: .5rem 1.4rem; font-size: .85rem; letter-spacing: .07em; text-transform: uppercase; transition: background .2s; }
     .nav-cta:hover { background: var(--amber-light); }
 
     /* HERO */
@@ -170,46 +157,6 @@
   
     /* ===== MOBILE NAV ===== */
     html, body { overflow-x: hidden; max-width: 100%; }
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      padding: 8px;
-      background: none;
-      border: none;
-      margin-left: auto;
-      flex-shrink: 0;
-    }
-    .hamburger span {
-      display: block;
-      width: 24px;
-      height: 2px;
-      background: currentColor;
-      border-radius: 2px;
-      transition: 0.2s;
-    }
-    .mobile-menu {
-      display: none;
-      flex-direction: column;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      right: 0;
-      background: inherit;
-      border-top: 1px solid rgba(0,0,0,0.1);
-      padding: 12px 0;
-      z-index: 999;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    }
-    .mobile-menu.open { display: flex; }
-    .mobile-menu a {
-      padding: 12px 24px;
-      font-size: 1rem;
-      font-weight: 600;
-      text-decoration: none;
-      display: block;
-    }
     @media (max-width: 768px) {
       nav, header {
         position: relative;
@@ -223,7 +170,6 @@
       /* hide desktop nav links / items */
       .nav-links, .nav-items, .nav-menu, .nav-right { display: none !important; }
       /* show hamburger */
-      .hamburger { display: flex !important; }
       /* fix any overflow-causing elements */
       nav > *, header > * { flex-shrink: 1; min-width: 0; }
       /* logo stays visible */
@@ -237,18 +183,42 @@
       }
     }
 
+  
+    nav { background: #fff; border-bottom: 2px solid #d97706; position: sticky; top: 0; z-index: 100; }
+    .nav-top { max-width: 1100px; margin: 0 auto; padding: 0.75rem 1.5rem; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { font-weight: 900; font-size: 1.1rem; color: #d97706; text-decoration: none; letter-spacing: -0.5px; }
+    .nav-links-desktop { display: flex; gap: 1.5rem; list-style: none; align-items: center; }
+    .nav-links-desktop a { text-decoration: none; color: #333; font-size: 0.9rem; font-weight: 500; }
+    .nav-links-desktop a:hover { color: #d97706; }
+    .nav-cta-btn { background: #d97706; color: #fff !important; padding: 0.4rem 1rem; border-radius: 4px; }
+    .nav-strip { display: none; overflow-x: auto; white-space: nowrap; padding: 0.5rem 1rem; border-top: 1px solid #eee; scrollbar-width: none; }
+    .nav-strip a { display: inline-block; text-decoration: none; color: #333; font-size: 0.85rem; font-weight: 500; margin-right: 1.2rem; }
+    .nav-strip .strip-cta { color: #d97706; font-weight: 700; }
+    @media (max-width: 840px) { .nav-links-desktop { display: none; } .nav-strip { display: block; } }
+
   </style>
 <!-- cb:2 -->
 </head>
 <body>
 
   <nav>
-    <a class="nav-brand" href="/"><span>Reusable</span>ShippingBoxes.com</a>
-    <div class="nav-action">
-      <span class="nav-tag">50+ trips guaranteed</span>
-      <a class="nav-cta" href="https://elipacko.com" target="_blank" rel="noopener">Get a Quote</a>
-    </div>
-  </nav>
+  <div class="nav-top">
+    <a href="/" class="nav-logo">ReusableShippingBoxes.com</a>
+    <ul class="nav-links-desktop" role="list">
+      <li><a href="/collapsible-crates/">Collapsible Crates</a></li>
+      <li><a href="/returnable-totes/">Returnable Totes</a></li>
+      <li><a href="/industrial-bins/">Industrial Bins</a></li>
+      <li><a href="https://elipacko.com"class="nav-cta-btn">Get a Quote</a></li>
+    </ul>
+  </div>
+  <div class="nav-strip" role="navigation">
+      <a href="/">Home</a>
+      <a href="/collapsible-crates/">Collapsible Crates</a>
+      <a href="/returnable-totes/">Returnable Totes</a>
+      <a href="/industrial-bins/">Industrial Bins</a>
+      <a href="https://elipacko.com"class="strip-cta">Get a Quote</a>
+  </div>
+</nav>
 
   <section class="hero">
     <div class="hero-grid">
@@ -449,22 +419,7 @@
   </footer>
 
 
-<script>
-(function(){
-  var btn = document.querySelector('.hamburger');
-  var menu = document.querySelector('.mobile-menu');
-  if(btn && menu){
-    btn.addEventListener('click', function(){
-      menu.classList.toggle('open');
-    });
-    document.addEventListener('click', function(e){
-      if(!btn.contains(e.target) && !menu.contains(e.target)){
-        menu.classList.remove('open');
-      }
-    });
-  }
-})();
-</script>
+
 
 </body>
 </html>
